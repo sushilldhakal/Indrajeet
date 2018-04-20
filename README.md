@@ -33,6 +33,7 @@ Basic colors changes can be made in the WordPress Customizer ( Appearance -> Cus
 
 If you need to further customize the theme, it is recommended that you first create a child theme so you will be able to update the theme in the future. You can read how to create a WordPress Child theme [here](http://codex.wordpress.org/Child_Themes).
 
+== Changelog ==
 
-1.0.0
-- Intial releases
+= 1.0.0 =
+* Intial releases
