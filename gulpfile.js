@@ -51,7 +51,7 @@ gulp.task('zip', function () {
    './inc/**/*',
    './js/**/*',
    './languages/*',
-   './sass/**/*',
+   '!sass',
    './template-parts/*',
    './templates/*',
    '!bower_components',
