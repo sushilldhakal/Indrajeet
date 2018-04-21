@@ -25,7 +25,7 @@
 					*Hook indrajeet_footer_widget_wrapper.
 					*
 					*@hooked indrajeet_footer_widgets - 10
-					*@hooked travel_log_footer_menu - 15
+					*@hooked indrajeet_footer_menu - 15
 					*/
 					do_action( 'indrajeet_footer_widget_wrapper' );
 					?>

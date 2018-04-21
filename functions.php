@@ -109,7 +109,7 @@ function indrajeet_scripts() {
 
 	wp_enqueue_style( 'indrajeet-josefin-sans-font-css', 'https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700' );
 
-	wp_enqueue_style( 'indrajeet-theme-style', get_template_directory_uri() . '/assets/css/theme-style.css','1.0.0' );
+	wp_enqueue_style( 'indrajeet-theme-style', get_template_directory_uri() . '/assets/css/theme-style.css','0.0.1' );
 
 	wp_enqueue_script( 'indrajeet-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
@@ -117,9 +117,9 @@ function indrajeet_scripts() {
 
 	wp_enqueue_script( 'indrajeet-js', get_template_directory_uri() . '/js/dist/scripts.js', array('jquery'), ' ', true );
 
-	wp_enqueue_script( 'smart-menu-script', get_template_directory_uri() . '/assets/js/jquery.smartmenus.min.js', array( 'jquery' ), '1.1.0', true );
+	wp_enqueue_script( 'jquery-smart-menu-script', get_template_directory_uri() . '/assets/js/jquery.smartmenus.min.js', array( 'jquery' ), '1.1.0', true );
 
-	wp_enqueue_script( 'indrajeet-theme-script', get_template_directory_uri() . '/assets/js/theme-script.js', array( 'indrajeet-js' ), '1.0.0', true );
+	wp_enqueue_script( 'indrajeet-theme-script', get_template_directory_uri() . '/assets/js/theme-script.js', array( 'indrajeet-js' ), '0.0.1', true );
 
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
