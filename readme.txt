@@ -1,43 +1,38 @@
 === Indrajeet ===
 
-Contributors: TechYamaraj
-Tags: translation-ready, custom-background, custom-header, theme-options, custom-menu, custom-logo, threaded-comments, left-sidebar, entertainment
-Requires at least: 4.0
-Tested up to: 4.9.4
-Stable tag: 1.0.0
-License: GNU General Public License v3 or later
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Contributors: automattic
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 
-Indrajeet is a simple and clean Blogging WordPress Theme.
+Requires at least: 4.5
+Tested up to: 4.8
+Stable tag: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+
+A starter theme called Indrajeet.
 
 == Description ==
 
-Indrajeet is a simple and clean WordPress bloging Theme. This Theme is ideal for starter. The theme has Theme Options panel based on powerful Customizer API which makes theme pretty easy to customize and configure. Indrajeet theme also has compatibality for WP Travel Plugin, that adds ease to managing tours and bookings.
+Bloging site
 
 == Installation ==
 
 1. In your admin panel, go to Appearance > Themes and click the Add New button.
-2. Click Upload and Choose File, then select the theme's .zip file. Click Install Now.
+2. Click Upload Theme and Choose File, then select the theme's .zip file. Click Install Now.
 3. Click Activate to use your new theme right away.
 
-== Credits ==
+== Frequently Asked Questions ==
 
-The Material Design WordPress Theme was started in 2014 by [Brad Williams](http://twitter.com/braginteractive/).
+= Does this theme support any plugins? =
 
-== Contributors ==
-
-Without the following projects/people this theme wouldn't be possible:
-
-- http://fezvrasta.github.io/bootstrap-material-design/
-- http://underscores.me/
-- http://getbootstrap.com
-
-== Customization ==
-Basic colors changes can be made in the WordPress Customizer ( Appearance -> Customize -> Colors).
-
-If you need to further customize the theme, it is recommended that you first create a child theme so you will be able to update the theme in the future. You can read how to create a WordPress Child theme [here](http://codex.wordpress.org/Child_Themes).
+Indrajeet includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 1.0.0 =
-* Intial releases
+= 1.0 - May 12 2015 =
+* Initial release
+
+== Credits ==
+
+* Based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
+* normalize.css https://necolas.github.io/normalize.css/, (C) 2012-2016 Nicolas Gallagher and Jonathan Neal, [MIT](https://opensource.org/licenses/MIT)

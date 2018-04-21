@@ -1,0 +1,160 @@
+.header-section {
+  position: relative;
+  min-height: 60px;
+  width: 100%;
+  margin-bottom: 3em; }
+
+.site-header {
+  min-height: 60px;
+  background: #fff;
+  width: 100%;
+  z-index: 99;
+  border-color: #ddd;
+  line-height: 0;
+  -webkit-transition: all .4s ease-in-out;
+  -moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out; }
+  .site-header .header-main-menu {
+    display: inline-block;
+    width: 100%; }
+  .site-header .site-branding {
+    float: left;
+    margin-right: 15px; }
+    .site-header .site-branding img {
+      height: 60px;
+      max-width: 100%;
+      width: auto; }
+    .site-header .site-branding .site-title {
+      margin: 0;
+      color: #555;
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 1.333; }
+    .site-header .site-branding .site-description {
+      margin-bottom: 0;
+      line-height: 1.333; }
+  .site-header #primary-menu {
+    margin-top: 0px;
+    padding-right: 0px; }
+    @media (max-width: 991.99px) and (min-width: 768px) {
+      .site-header #primary-menu {
+        float: left;
+        width: 100%;
+        text-align: center;
+        line-height: 0; } }
+    @media (max-width: 767.99px) {
+      .site-header #primary-menu {
+        line-height: 76px; } }
+    .site-header #primary-menu > li > a {
+      line-height: 76px;
+      display: inline-block;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      height: 76px;
+      font-size: 14px;
+      transition: all 0.5s ease-in-out; }
+    @media (max-width: 767.99px) {
+      .site-header #primary-menu > li .cart-icon {
+        text-align: center; }
+      .site-header #primary-menu > li .dispaly-search-form {
+        display: none; } }
+    @media (max-width: 767.99px) {
+      .site-header #primary-menu .sm {
+        position: absolute;
+        left: 0px;
+        width: calc(100% + 30px);
+        top: 100%;
+        max-height: 320px;
+        overflow-y: auto;
+        box-shadow: rgba(45, 45, 45, 0.31) 0px 7px 10px 0px;
+        background: white;
+        margin: 0px -15px;
+        border-top: 1px solid #dddddd; } }
+    @media (max-width: 767.99px) {
+      .site-header #primary-menu .sm li > a {
+        line-height: 40px;
+        height: 40px;
+        width: 100%;
+        padding-right: 35px; } }
+  .site-header .main-navigation {
+    float: right; }
+  .site-header #main-menu-state {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px); }
+    .site-header #main-menu-state:not(:checked) ~ #main-menu {
+      display: none; }
+    .site-header #main-menu-state:checked ~ #main-menu {
+      display: inline-block; }
+  .site-header .main-menu-btn {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 20px;
+    text-indent: 28px;
+    white-space: nowrap;
+    cursor: pointer;
+    top: 3px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    overflow: hidden; }
+  @media (min-width: 768px) {
+    .site-header {
+      /* hide the button in desktop view */
+      /* always show the menu in desktop view */ }
+      .site-header .main-menu-btn {
+        position: absolute;
+        top: -99999px; }
+      .site-header #main-menu-state:not(:checked) ~ #main-menu {
+        display: inline-block; } }
+
+.sticky {
+  min-height: 60px; }
+  .sticky .header-wrapper-for-sticky {
+    position: fixed !important;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 999;
+    box-shadow: 0 6px 25px 0px rgba(0, 0, 0, 0.29); }
+  .sticky .ws-theme-top-header {
+    display: none; }
+  .sticky .header-main-menu {
+    display: inline-block;
+    width: 100%; }
+
+.site-footer .widget-area {
+  flex: 0 0 100%;
+  max-width: 100%; }
+.site-footer .card {
+  background-color: transparent;
+  color: #fff;
+  box-shadow: none; }
+  .site-footer .card .card-header {
+    padding: 1rem 0 0.5rem;
+    border-bottom: 1px solid #b7b7b7;
+    margin-bottom: 0.5rem; }
+  .site-footer .card a {
+    color: #e4e4e4; }
+    .site-footer .card a:hover, .site-footer .card a:focus, .site-footer .card a:active {
+      color: #fff;
+      text-decoration: none;
+      outline: none; }
+  .site-footer .card ul li {
+    padding: .5rem 0;
+    border-bottom: 1px solid #a5a4a4; }
+    .site-footer .card ul li:hover {
+      background-color: transparent; }
+
+.below-footer {
+  padding: 10px 0;
+  background-color: #000;
+  color: #fff;
+  font-size: 12px; }
+
+/*# sourceMappingURL=theme-style.css.map */

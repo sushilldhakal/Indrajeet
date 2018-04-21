@@ -4,20 +4,21 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package Indrajeet 
+ * @package Indrajeet
  */
 
-get_header(); ?>
-
+get_header();
+?>
 	<div class="container">
 		<div class="row">
 			<div id="primary" class="content-area">
-				<main id="main" class="site-main" role="main">
+				<main id="main" class="site-main">
 
 				<?php
-				while ( have_posts() ) : the_post();
+				while ( have_posts() ) :
+					the_post();
 
-					get_template_part( 'template-parts/content', get_post_format() );
+					get_template_part( 'template-parts/content', get_post_type() );
 
 					the_post_navigation();
 
