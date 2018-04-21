@@ -19,14 +19,13 @@
   /* make room for the toggle button (sub indicator) */
   padding-right: 58px;
   color: #555555;
-  font-family: "Lucida Sans Unicode", "Lucida Sans", "Lucida Grande", Arial, sans-serif;
   font-size: 18px;
   font-weight: normal;
   line-height: 17px;
   text-decoration: none;
 }
 .sm-clean a.current {
-  color: #D23600;
+  color: #004a43;
 }
 .sm-clean a.disabled {
   color: #bbbbbb;
@@ -146,10 +145,10 @@
     border-radius: 0 !important;
   }
   .sm-clean a:hover, .sm-clean a:focus, .sm-clean a:active, .sm-clean a.highlighted {
-    color: #D23600;
+    color: #004a43;
   }
   .sm-clean a.current {
-    color: #D23600;
+    color: #004a43;
   }
   .sm-clean a.disabled {
     color: #bbbbbb;
@@ -208,10 +207,10 @@
   }
   .sm-clean ul a:hover, .sm-clean ul a:focus, .sm-clean ul a:active, .sm-clean ul a.highlighted {
     background: #eeeeee;
-    color: #D23600;
+    color: #004a43;
   }
   .sm-clean ul a.current {
-    color: #D23600;
+    color: #004a43;
   }
   .sm-clean ul a.disabled {
     background: #fff;
@@ -242,10 +241,10 @@
     background: #eeeeee;
   }
   .sm-clean .scroll-up:hover .scroll-up-arrow {
-    border-color: transparent transparent #D23600 transparent;
+    border-color: transparent transparent #004a43 transparent;
   }
   .sm-clean .scroll-down:hover .scroll-down-arrow {
-    border-color: #D23600 transparent transparent transparent;
+    border-color: #004a43 transparent transparent transparent;
   }
   .sm-clean .scroll-up-arrow,
   .sm-clean .scroll-down-arrow {
