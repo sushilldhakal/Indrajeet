@@ -14,7 +14,7 @@ if ( ! function_exists( 'indrajeet_active_footer_count' ) ) :
 	 *
 	 * @return [INT] [Number of active footer widgets]
 	 *
-	 * @since 1.0.0
+	 * @since 0.0.1
 	 */
 	function indrajeet_active_footer_count() {
 

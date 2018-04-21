@@ -42,7 +42,7 @@ if ( ! function_exists( 'indrajeet_footer_widgets' ) ) :
 	/**
 	 * Footer widgets.
 	 *
-	 * @since 1.0.0
+	 * @since 0.0.1
 	 */
 	function indrajeet_footer_widgets() {
 
