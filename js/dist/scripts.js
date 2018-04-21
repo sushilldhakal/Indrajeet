@@ -2527,7 +2527,7 @@ return Popper;
 })));
 //# sourceMappingURL=popper.js.map
 
-(function (global, factory) {
+(function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('jquery'), require('popper.js')) :
 	typeof define === 'function' && define.amd ? define(['jquery', 'popper.js'], factory) :
 	(factory(global.jQuery,global.Popper));
@@ -9065,7 +9065,7 @@ var BootstrapMaterialDesign = function ($$$1) {
 })));
 //# sourceMappingURL=bootstrap-material-design.js.map
 
-jQuery(document).ready(function($) {
+jQuery(document).ready(function($) {
 	//Init all the Bootstrap Material Design JS features
 	$('body').bootstrapMaterialDesign();
 });
