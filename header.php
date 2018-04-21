@@ -60,6 +60,7 @@
 								'menu_id'        => 'primary-menu',
 								'menu_class'	 => 'sm sm-clean',
 								'container'		 => '',
+								'fallback_cb' => 'indrajeet_primary_menu_fallback'
 							) );
 							?>
 						</nav><!-- #site-navigation -->

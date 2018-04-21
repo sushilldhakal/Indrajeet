@@ -37,3 +37,23 @@ if ( ! function_exists( 'indrajeet_active_footer_count' ) ) :
 	}
 
 endif;
+
+if ( ! function_exists( 'indrajeet_primary_menu_fallback' ) ) :
+
+	/**
+	 * Fallback for Primary menu.
+	 * @since 1.0.0
+	 */
+	function indrajeet_primary_menu_fallback( $args ) {
+
+		echo '<ul id="primary-menu" class="sm sm-clean">';
+		echo '<li><a href="' . esc_url( home_url( '/' ) ) . '">' . esc_html__( 'Home', 'indrajeet' ) . '</a></li>';
+		wp_list_pages( array(
+			'title_li' => '',
+			'depth'    => 1,
+			'number'   => 8,
+		) );
+		echo '</ul>';
+
+	}
+endif;
