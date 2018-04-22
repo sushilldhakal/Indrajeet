@@ -49,7 +49,7 @@
 
 						<?php
 						/* translators: 1: Theme name, 2: Theme author. */ 
-						apply_filters( 'ws_footer_credits_text', printf( esc_html__( '%1$s by %2$s.', 'indrajeet' ), 'Travel Log', '<a href="http://sushill.com.np/" rel="designer">Sushill</a>' ) ); ?>
+						apply_filters( 'ws_footer_credits_text', printf( esc_html__( '%1$s by %2$s.', 'indrajeet' ), 'Indrajeet', '<a href="http://sushill.com.np/" rel="designer">Sushill</a>' ) ); ?>
 				
 				</div><!-- .site-info -->
 			</div>
