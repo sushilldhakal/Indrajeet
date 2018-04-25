@@ -14,18 +14,31 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
+
+<div id="onload" class="loader-active">
+	 <div id="stage" class="loader-spinner"></div>
+</div>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'indrajeet' ); ?></a>
 
 
 	<div id="header" class="header-section">
+
+		<?php
+			/**
+			 * Hook before_header.
+			 *
+			 * @hooked indrajeet_top_header - 10
+			 */
+			do_action( 'before_header' );
+			?>
+		
 		<div class="header-wrapper-for-sticky">
 			<header id="masthead" class="site-header">
 				<div class="container">

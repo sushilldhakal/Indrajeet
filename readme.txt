@@ -5,7 +5,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 
 Requires at least: 4.5
 Tested up to: 4.8
-Stable tag: 0.0.1
+Stable tag: 0.0.2
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -29,7 +29,7 @@ Indrajeet includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 0.0.1 =
+= 0.0.2 =
 * Initial release
 
 == Credits ==
@@ -54,10 +54,13 @@ Indrajeet includes support for Infinite Scroll in Jetpack.
 	License: http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
 	Source: http://fontawesome.io
 
-* bootstrap-material-design.js by @FezVrasta 
+* bootstrap-material-design by @FezVrasta 
 	Socure: https://github.com/FezVrasta/bootstrap-material-design
 	License: The MIT License (MIT) Copyright (c) 2015-2016, Federico Zivolo and contributors 
 	License Url: https://github.com/FezVrasta/bootstrap-material-design/blob/master/LICENSE.md
+
+		Bootstrap The MIT License (MIT), https://github.com/twbs/bootstrap/blob/master/LICENSE 
+		MDL © Google, 2015. Licensed under an Apache-2 license. https://github.com/google/material-design-lite/blob/master/LICENSE
 
 
 *SmartMenus jQuery Plugin by @vadikom

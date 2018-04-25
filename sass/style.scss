@@ -1,0 +1,51 @@
+/*
+Theme Name: indrajeet
+Theme URI: http://sushill.com.np/indrajeet
+Author: sus-hill
+Author URI: http://sushill.com.np
+Description: Material Design Bootstrap 4 WordPress Theme
+Version: 0.0.2
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: indrajeet
+Tags: blog,left-sidebar,custom-background,custom-logo,footer-widgets
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+indrajeet is based on Underscores http://underscores.me/, (C) 2012-2017 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+
+/*--------------------------------------------------------------
+# Variables
+--------------------------------------------------------------*/
+@import "vars/vars";
+
+/*--------------------------------------------------------------
+# Bootstrap
+--------------------------------------------------------------*/
+@import "bootstrap-material-design/bootstrap-material-design";
+
+/*--------------------------------------------------------------
+# Theme Styles and Layout
+--------------------------------------------------------------*/
+@import "site/site";
+
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+@import "media/media";
+
+.alignright{
+  text-align:right;
+}
+.alignleft{
+  text-align: left;
+}
+.aligncenter{
+  text-align:center;
+}

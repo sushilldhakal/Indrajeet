@@ -7,25 +7,175 @@
  * @package Indrajeet
  */
 
-if ( ! function_exists( 'indrajeet_setup' ) ) :
+
+// Core Constants
+define( 'INDRAJEET_THEME_DIR', get_template_directory() );
+define( 'INDRAJEET_THEME_URI', get_template_directory_uri() );
+
+
+class INDRAJEET_Theme_Class{
+
+
 	/**
-	 * Sets up theme defaults and registers support for various WordPress features.
+	 * Main Theme Class Constructor
 	 *
-	 * Note that this function is hooked into the after_setup_theme hook, which
-	 * runs before the init hook. The init hook is too late for some features, such
-	 * as indicating support for post thumbnails.
+	 * @since   1.0.0
 	 */
-	function indrajeet_setup() {
-		/*
-		 * Make theme available for translation.
-		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on Indrajeet, use a find and replace
-		 * to change 'indrajeet' to the name of your theme in all the template files.
-		 */
-		load_theme_textdomain( 'indrajeet', get_template_directory() . '/languages' );
+	public function __construct() {
+
+		// Define constants
+		add_action( 'after_setup_theme', array( 'INDRAJEET_Theme_Class', 'constants' ), 0 );
+
+		// Load all core theme function files
+		add_action( 'after_setup_theme', array( 'INDRAJEET_Theme_Class', 'include_functions' ), 1 );
+
+		// Setup theme => add_theme_support, register_nav_menus, load_theme_textdomain, etc
+		add_action( 'after_setup_theme', array( 'INDRAJEET_Theme_Class', 'indrajeet_setup' ), 10 );
+
+		// Setup theme => Generate the custom CSS file
+		add_action( 'admin_bar_init', array( 'INDRAJEET_Theme_Class', 'save_customizer_css_in_file' ), 9999 );
+
+		// register sidebar widget areas
+		add_action( 'widgets_init', array( 'INDRAJEET_Theme_Class', 'register_sidebars' ) );
+
+		if( is_admin() ){
+
+			// Load scripts in the WP admin
+			add_action( 'admin_enqueue_scripts', array( 'INDRAJEET_Theme_Class', 'admin_scripts' ) );
+
+		} else {
+
+			// Load theme CSS
+			add_action( 'wp_enqueue_scripts', array( 'INDRAJEET_Theme_Class', 'theme_css' ) );
+
+			// Add meta viewport tag to header
+			add_action( 'wp_head', array( 'INDRAJEET_Theme_Class', 'meta_viewport' ), 1 );
+
+			// Load this file in last
+			add_action( 'wp_enqueue_scripts', array( 'INDRAJEET_Theme_Class', 'custom_style_css' ), 9999 );
+
+			// Load theme js
+			add_action( 'wp_enqueue_scripts', array( 'INDRAJEET_Theme_Class', 'theme_js' ) );
+
+			// Outputs custom CSS to the head
+			add_action( 'wp_head', array( 'INDRAJEET_Theme_Class', 'custom_css' ), 9999 );
+
+			// Minify the WP custom CSS because WordPress doesn't do it by default
+			add_filter( 'wp_get_custom_css', array( 'INDRAJEET_Theme_Class', 'minify_custom_css' ) );
+
+			// Alter tagcloud widget to display all tags with 1em font size
+			add_filter( 'widget_tag_cloud_args', array( 'INDRAJEET_Theme_Class', 'widget_tag_cloud_args' ) );
+
+			// Alter WP categories widget to display count inside a span
+			add_filter( 'wp_list_categories', array( 'INDRAJEET_Theme_Class', 'wp_list_categories_args' ) );
+
+			//add class to main container acording to the sidebar active
+			add_filter( 'wp_content_area_size', array( 'INDRAJEET_Theme_Class', 'getMainColumnSize' ) );
+
+		}
+
+	}	
+	/**
+	 * Define Constants
+	 *
+	 * @since   0.0.3
+	 */
+	public static function constants() {
+
+		$version = self::theme_version();
+
+		// Theme version
+		define( 'INDRAJEET_THEME_VERSION', $version );
+
+		// Javascript and CSS Paths
+		define( 'INDRAJEET_JS_DIR_URI', INDRAJEET_THEME_URI .'/assets/js/' );
+		define( 'INDRAJEET_CSS_DIR_URI', INDRAJEET_THEME_URI .'/assets/css/' );
+
+		// Include Paths
+		define( 'INDRAJEET_INC_DIR', INDRAJEET_THEME_DIR .'/inc/' );
+		define( 'INDRAJEET_INC_DIR_URI', INDRAJEET_THEME_URI .'/inc/' );
+	}
+
+
+	/**
+	 * Load core theme function files
+	 *
+	 * @since 0.0.3
+	 */
+	public static function include_functions() {
+		$dir = INDRAJEET_INC_DIR;
+		require_once ( $dir .'load.php' );
+	}
+
+	/**
+	 * Returns current theme version
+	 *
+	 * @since   0.0.3
+	 */
+	public static function theme_version() {
+
+		// Get theme data
+		$theme = wp_get_theme();
+
+		// Return theme version
+		return $theme->get( 'Version' );
+
+	}
+
+	/**
+	 * Theme Setup
+	 *
+	 * @since   0.0.3
+	 */
+	public static function indrajeet_setup() {
+		
+		// Load text domain
+		load_theme_textdomain( 'indrajeet', INDRAJEET_THEME_DIR . '/languages' );
+
+
+		// Get globals
+		global $content_width;
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
+
+
+		// Set content width based on theme's default design
+		if ( ! isset( $content_width ) ) {
+			$content_width = 1200;
+		}
+
+
+
+		// Configurations ----------------------------------------------------------------------------
+		// Left sidebar column size. Bootstrap have 12 columns this sidebar column size must not greater than 12.
+		if (!isset($indrajeet_sidebar_left_size)) {
+		    $indrajeet_sidebar_left_size = 3;
+		}
+		// Right sidebar column size.
+		if (!isset($indrajeet_sidebar_right_size)) {
+		    $indrajeet_sidebar_right_size = 3;
+		}
+		// Once you specified left and right column size, while widget was activated in all or some sidebar the main column size will be calculate automatically from these size and widgets activated.
+		// For example: you use only left sidebar (widgets activated) and left sidebar size is 4, the main column size will be 12 - 4 = 8.
+		// 
+		// Title separator. Please note that this value maybe able overriden by other plugins.
+		if (!isset($indrajeet_title_separator)) {
+		    $indrajeet_title_separator = '|';
+		}
+
+
+
+
+
+		// Register navigation menus
+		register_nav_menus( array(
+			'topbar_menu'     => esc_html__( 'Top Bar', 'indrajeet' ),
+			'social_menu'     => esc_html__( 'Social Menu', 'indrajeet' ),
+			'primary-menu' => esc_html__( 'Primary', 'indrajeet' ),
+			'footer_menu'     => esc_html__( 'Footer', 'indrajeet' )
+
+		) );
 
 		/*
 		 * Let WordPress manage the document title.
@@ -42,11 +192,16 @@ if ( ! function_exists( 'indrajeet_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
-		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus( array(
-			'primary-menu' => esc_html__( 'Primary', 'indrajeet' ),
-		) );
-
+		
+		/**
+		 * Enable support for header image
+		 */
+		add_theme_support( 'custom-header', apply_filters( 'indrajeet_custom_header_args', array(
+			'width'              => 2000,
+			'height'             => 1200,
+			'flex-height'        => true,
+			'video'              => true,
+		) ) );
 		/*
 		 * Switch default core markup for search form, comment form, and comments
 		 * to output valid HTML5.
@@ -80,90 +235,277 @@ if ( ! function_exists( 'indrajeet_setup' ) ) :
 			'flex-height' => true,
 		) );
 	}
-endif;
-add_action( 'after_setup_theme', 'indrajeet_setup' );
 
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
-function indrajeet_content_width() {
-	// This variable is intended to be overruled from themes.
-	// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
-	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-	$GLOBALS['content_width'] = apply_filters( 'indrajeet_content_width', 640 );
-}
-add_action( 'after_setup_theme', 'indrajeet_content_width', 0 );
+	/**
+	 * Adds the meta tag to the site header
+	 *
+	 * @since 0.0.3
+	 */
+	public static function meta_viewport() {
 
-/**
- * Enqueue scripts and styles.
- */
-function indrajeet_scripts() {
+		// Meta viewport
+		$viewport = '<meta name="viewport" content="width=device-width, initial-scale=1">';
 
-	wp_enqueue_style( 'indrajeet-style', get_stylesheet_uri() );
+		// Apply filters for child theme tweaking
+		echo apply_filters( 'indrajeet_meta_viewport', $viewport );
 
-	wp_enqueue_style( 'smart-menu-style', get_template_directory_uri() . '/assets/css/sm-core-css.css', array(), '1.1.0' );
+	}
 
-	wp_enqueue_style( 'indrajeet-josefin-sans-font-css', 'https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700' );
+	/**
+	 * Load scripts in the WP admin
+	 *
+	 * @since 0.0.3
+	 */
+	public static function admin_scripts() {
+		global $pagenow;
+		if ( 'nav-menus.php' == $pagenow ) {
+			wp_enqueue_script( 'indrajeet-menus', INDRAJEET_JS_DIR_URI .'jquery.smartmenu.js' );
+		}
+	}
 
-	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css', array(), '4.6.3' );
+	/**
+	 * Load front-end scripts
+	 *
+	 * @since   0.0.3
+	 */
+	public static function theme_css() {
 
-	wp_enqueue_style( 'indrajeet-theme-style', get_template_directory_uri() . '/assets/css/theme-style.css','0.0.1' );
-
-	wp_enqueue_script( 'indrajeet-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-
-	wp_enqueue_script( 'indrajeet-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-
-	wp_enqueue_script( 'indrajeet-js', get_template_directory_uri() . '/assets/js/bootstrap-material-design.js', array('jquery'), '4.1.1', true );
-
-	wp_enqueue_script( 'jquery-smart-menu-script', get_template_directory_uri() . '/assets/js/jquery.smartmenus.js', array( 'jquery' ), '1.1.0', true );
-
-	wp_enqueue_script( 'indrajeet-theme-script', get_template_directory_uri() . '/assets/js/theme-script.js', array( 'indrajeet-js' ), '0.0.1', true );
+		// Define dir
+		$dir =INDRAJEET_CSS_DIR_URI;
+		$theme_version =INDRAJEET_THEME_VERSION;
 
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
+		wp_enqueue_style( 'indrajeet-style', get_stylesheet_uri() );
+
+		wp_enqueue_style( 'smart-menu-style', $dir . 'sm-core-css.css', array(), '1.1.0' );
+
+		wp_enqueue_style( 'indrajeet-josefin-sans-font-css', 'https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700' );
+
+		wp_enqueue_style( 'font-awesome', $dir . 'font-awesome.min.css', array(), '4.6.3' );
+
+		wp_enqueue_style( 'indrajeet-theme-style', $dir . 'theme-style.css', false, $theme_version );
+		
+	}
+
+	/**
+	 * Returns all js needed for the front-end
+	 *
+	 * @since 0.0.3
+	 */
+	public static function theme_js() {
+
+		// Get js directory uri
+		$dir =INDRAJEET_JS_DIR_URI;
+
+		// Get current theme version
+		$theme_version =INDRAJEET_THEME_VERSION;
+
+		wp_enqueue_script( 'indrajeet-navigation', $dir . 'navigation.js', array(), '20151215', true );
+
+		wp_enqueue_script( 'indrajeet-skip-link-focus-fix', $dir . 'skip-link-focus-fix.js', array(), '20151215', true );
+
+		wp_enqueue_script( 'indrajeet-js', $dir . 'bootstrap-material-design.js', array('jquery'), '4.1.1', true );
+
+		wp_enqueue_script( 'jquery-smart-menu-script', $dir . 'jquery.smartmenus.js', array( 'jquery' ), '1.1.0', true );
+
+		wp_enqueue_script( 'indrajeet-theme-script', $dir . 'theme-script.js', array( 'indrajeet-js' ), $theme_version, true );
+
+		// Comment reply
+		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+			wp_enqueue_script( 'comment-reply' );
+		}
+
+	}
+
+	/**
+	 * Registers sidebars
+	 *
+	 * @since   0.0.3
+	 */
+	public static function register_sidebars() {
+
+		register_sidebar( array(
+			'name'          => esc_html__( 'Right Sidebar', 'indrajeet' ),
+			'id'            => 'sidebar-1',
+			'description'   => esc_html__( 'Add widgets here.', 'indrajeet' ),
+			'before_widget' => '<section id="%1$s" class="widget card %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h4 class="widget-title card-header">',
+			'after_title'   => '</h4>',
+		) );
+
+		register_sidebar( array(
+			'name'          => esc_html__( 'Left Sidebar', 'indrajeet' ),
+			'id'            => 'sidebar-2',
+			'description'   => esc_html__( 'Add widgets here.', 'indrajeet' ),
+			'before_widget' => '<section id="%1$s" class="widget card %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h4 class="widget-title card-header">',
+			'after_title'   => '</h4>',
+		) );
+		// Search Results Sidebar
+		if ( get_theme_mod( 'indrajeet_search_custom_sidebar', true ) ) {
+			register_sidebar( array(
+				'name'			=> esc_html__( 'Search Results Sidebar', 'indrajeet' ),
+				'id'			=> 'search_sidebar',
+				'description'	=> esc_html__( 'Widgets in this area are used in the search result page.', 'indrajeet' ),
+				'before_widget'	=> '<section id="%1$s" class="widget card %2$s">',
+				'after_widget'	=> '</section>',
+				'before_title'	=> '<h4 class="widget-title card-header">',
+				'after_title'	=> '</h4>',
+			) );
+		}
+
+		$args = array(
+			'name'          => esc_html__( 'Footer Widget %s', 'indrajeet' ),
+			'id'            => 'footer-sidebar',
+			'description'   => esc_html__( 'Add widgets here.', 'indrajeet' ),
+			'before_widget' => '<section id="%1$s" class="widget card %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title card-header">',
+			'after_title'   => '</h2>',
+		);
+		register_sidebars( 4, $args );
+
+	}
+
+
+	/**
+	 * All theme functions hook into the indrajeet_head_css filter for this function.
+	 *
+	 * @since 0.0.3
+	 */
+	public static function custom_css( $output = NULL ) {
+			    
+	    // Add filter for adding custom css via other functions
+		$output = apply_filters( 'indrajeet_head_css', $output );
+
+		// If Custom File is selected
+		if ( 'file' == get_theme_mod( 'indrajeet_customzer_styling', 'head' ) ) {
+
+			global $wp_customize;
+			$upload_dir = wp_upload_dir();
+
+			// Render CSS in the head
+			if ( isset( $wp_customize ) || ! file_exists( $upload_dir['basedir'] .'/indrajeet/custom-style.css' ) ) {
+
+				 // Minify and output CSS in the wp_head
+				if ( ! empty( $output ) ) {
+					echo "<!-- indrajeet CSS -->\n<style type=\"text/css\">\n" . wp_strip_all_tags( indrajeet_minify_css( $output ) ) . "\n</style>";
+				}
+			}
+
+		} else {
+
+			// Minify and output CSS in the wp_head
+			if ( ! empty( $output ) ) {
+				echo "<!-- indrajeet CSS -->\n<style type=\"text/css\">\n" . wp_strip_all_tags( indrajeet_minify_css( $output ) ) . "\n</style>";
+			}
+
+		}
+
+	}
+
+	/**
+	 * Minify the WP custom CSS because WordPress doesn't do it by default.
+	 *
+	 * @since 0.0.3
+	 */
+	public static function minify_custom_css( $css ) {
+
+		return indrajeet_minify_css( $css );
+
+	}
+
+	/**
+	 * Save Customizer CSS in a file
+	 *
+	 * @since 0.0.3
+	 */
+	public static function save_customizer_css_in_file( $output = NULL ) {
+
+		// If Custom File is not selected
+		if ( 'file' != get_theme_mod( 'indrajeet_customzer_styling', 'head' ) ) {
+			return;
+		}
+
+		// Get all the customier css
+	    $output = apply_filters( 'indrajeet_head_css', $output );
+
+	    // Get Custom Panel CSS
+	    $output_custom_css = wp_get_custom_css();
+
+	    // Minified the Custom CSS
+		$output .= indrajeetwp_minify_css( $output_custom_css );
+			
+		// We will probably need to load this file
+		require_once( ABSPATH . 'wp-admin' . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'file.php' );
+		
+		global $wp_filesystem;
+		$upload_dir = wp_upload_dir(); // Grab uploads folder array
+		$dir = trailingslashit( $upload_dir['basedir'] ) . 'indrajeet'. DIRECTORY_SEPARATOR; // Set storage directory path
+
+		WP_Filesystem(); // Initial WP file system
+		$wp_filesystem->mkdir( $dir ); // Make a new folder 'indrajeet' for storing our file if not created already.
+		$wp_filesystem->put_contents( $dir . 'custom-style.css', $output, 0644 ); // Store in the file.
+
+	}
+
+	/**
+	 * Include Custom CSS file if present.
+	 *
+	 * @since 0.0.3
+	 */
+	public static function custom_style_css( $output = NULL ) {
+
+		// If Custom File is not selected
+		if ( 'file' != get_theme_mod( 'indrajeet_customzer_styling', 'head' ) ) {
+			return;
+		}
+
+		global $wp_customize;
+		$upload_dir = wp_upload_dir();
+
+		// Get all the customier css
+	    $output = apply_filters( 'indrajeet_head_css', $output );
+
+	    // Get Custom Panel CSS
+	    $output_custom_css = wp_get_custom_css();
+
+	    // Minified the Custom CSS
+		$output .= indrajeet_minify_css( $output_custom_css );
+
+		// Render CSS from the custom file
+		if ( ! isset( $wp_customize ) && file_exists( $upload_dir['basedir'] .'/indrajeet/custom-style.css' ) && ! empty( $output ) ) { 
+		    wp_enqueue_style( 'indrajeet-custom', trailingslashit( $upload_dir['baseurl'] ) . 'indrajeet/custom-style.css', false, null );	    			
+		}		
+	}
+
+	/**
+	 * Alters the default WordPress tag cloud widget arguments.
+	 * Makes sure all font sizes for the cloud widget are set to 1em.
+	 *
+	 * @since 0.0.3
+	 */
+	public static function widget_tag_cloud_args( $args ) {
+		$args['largest']  = '0.923em';
+		$args['smallest'] = '0.923em';
+		$args['unit']     = 'em';
+		return $args;
+	}
+
+	/**
+	 * Alter wp list categories arguments.
+	 * Adds a span around the counter for easier styling.
+	 *
+	 * @since 0.0.3
+	 */
+	public static function wp_list_categories_args( $links ) {
+		$links = str_replace( '</a> (', '</a> <span class="cat-count-span">(', $links );
+		$links = str_replace( ' )', ' )</span>', $links );
+		return $links;
 	}
 }
-add_action( 'wp_enqueue_scripts', 'indrajeet_scripts' );
 
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
 
-/**
- * Register Widget Areas
- */
-require get_template_directory() . '/inc/widget-area.php';
-
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/template-functions.php';
-
-/**
- * Custom functions that act independently of the theme templates.
- */
-require get_template_directory() . '/inc/extras.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
-
+$indrajeet_theme_class = new INDRAJEET_Theme_Class;

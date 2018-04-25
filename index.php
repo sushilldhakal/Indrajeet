@@ -17,7 +17,8 @@ get_header();
 
 	<div class="container">
 		<div class="row">
-			<div id="primary" class="content-area">
+			<?php get_sidebar('left'); ?>
+			<div id="primary" class="content-area col">
 				<main id="main" class="site-main">
 
 				<?php

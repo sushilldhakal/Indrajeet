@@ -7,11 +7,17 @@
  * @package Indrajeet
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+global $indrajeet_sidebar_right_size;
+if ($indrajeet_sidebar_right_size == null || !is_numeric($indrajeet_sidebar_right_size)) {
+    $indrajeet_sidebar_right_size = 3;
+}
+
+
+if ( ! is_active_sidebar( 'Sidebar-1' ) ) {
 	return;
 }
 ?>
 
-<aside id="secondary" class="widget-area">
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
+<aside id="secondary" class="widget-area col-md-<?php echo $indrajeet_sidebar_right_size; ?>">
+	<?php dynamic_sidebar( 'Sidebar-1' ); ?>
 </aside><!-- #secondary -->

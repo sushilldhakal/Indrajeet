@@ -14,7 +14,7 @@ if ( ! function_exists( 'indrajeet_active_footer_count' ) ) :
 	 *
 	 * @return [INT] [Number of active footer widgets]
 	 *
-	 * @since 0.0.1
+	 * @since 0.0.2
 	 */
 	function indrajeet_active_footer_count() {
 
@@ -38,11 +38,48 @@ if ( ! function_exists( 'indrajeet_active_footer_count' ) ) :
 
 endif;
 
+if ( ! function_exists('indrajeet_sidebar_active') ) :
+
+	/**
+	 * [indrajeet_sidebar_active count active sidebar]
+	 *
+	 * @return [INT] [Number of active sidebar widgets]
+	 *
+	 * @since 0.0.3
+	 */
+	function indrajeet_sidebar_active(){
+        global $indrajeet_sidebar_left_size, $indrajeet_sidebar_right_size;
+        if ($indrajeet_sidebar_left_size == null || !is_numeric($indrajeet_sidebar_left_size)) {
+            $indrajeet_sidebar_left_size = 3;
+        }
+        if ($indrajeet_sidebar_right_size == null || !is_numeric($indrajeet_sidebar_right_size)) {
+            $indrajeet_sidebar_right_size = 3;
+        }
+
+        if (is_active_sidebar('sidebar-left') && is_active_sidebar('sidebar-right')) {
+            $main_column_size = (12 - $indrajeet_sidebar_left_size - $indrajeet_sidebar_right_size);
+
+        } elseif (is_active_sidebar('sidebar-left') && !is_active_sidebar('sidebar-right')) {
+            $indrajeet_sidebar_left_size = 4;
+            $main_column_size = (12 - $indrajeet_sidebar_left_size);
+
+        } elseif (!is_active_sidebar('sidebar-left') && is_active_sidebar('sidebar-right')) {
+        	$indrajeet_sidebar_right_size = 4;
+            $main_column_size = (12 - $indrajeet_sidebar_right_size);
+        } else {
+            $main_column_size = 12;
+        }
+
+        return $main_column_size;
+    }// getMainColumnSize
+
+endif;
+
 if ( ! function_exists( 'indrajeet_primary_menu_fallback' ) ) :
 
 	/**
 	 * Fallback for Primary menu.
-	 * @since 1.0.0
+	 * @since 0.0.3
 	 */
 	function indrajeet_primary_menu_fallback( $args ) {
 
@@ -57,3 +94,44 @@ if ( ! function_exists( 'indrajeet_primary_menu_fallback' ) ) :
 
 	}
 endif;
+
+
+/**
+ * Minify CSS
+ *
+ * @since 0.0.3
+ */
+if ( ! function_exists( 'indrajeet_minify_css' ) ) {
+
+	function indrajeet_minify_css( $css = '' ) {
+
+		// Return if no CSS
+		if ( ! $css ) return;
+
+		// Normalize whitespace
+		$css = preg_replace( '/\s+/', ' ', $css );
+
+		// Remove ; before }
+		$css = preg_replace( '/;(?=\s*})/', '', $css );
+
+		// Remove space after , : ; { } */ >
+		$css = preg_replace( '/(,|:|;|\{|}|\*\/|>) /', '$1', $css );
+
+		// Remove space before , ; { }
+		$css = preg_replace( '/ (,|;|\{|})/', '$1', $css );
+
+		// Strips leading 0 on decimal values (converts 0.5px into .5px)
+		$css = preg_replace( '/(:| )0\.([0-9]+)(%|em|ex|px|in|cm|mm|pt|pc)/i', '${1}.${2}${3}', $css );
+
+		// Strips units if value is 0 (converts 0px to 0)
+		$css = preg_replace( '/(:| )(\.?)0(%|em|ex|px|in|cm|mm|pt|pc)/i', '${1}0', $css );
+
+		// Trim
+		$css = trim( $css );
+
+		// Return minified CSS
+		return $css;
+		
+	}
+
+}
