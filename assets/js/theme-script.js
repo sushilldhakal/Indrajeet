@@ -31,6 +31,14 @@
 	});
   //end
 
+  jQuery('.theme-top-header .header-info a').click( function(e){
+  	 e.preventDefault();
+	  if (jQuery(this).parent().hasClass('disabled'))
+	    return false; // Do something else in here if required
+	  else
+	    window.location.href = jQuery(this).attr('href');
+  });
+
   $('#onload').hide();
 
 })(jQuery);   

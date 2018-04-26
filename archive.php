@@ -8,13 +8,24 @@
  */
 
 get_header();
+
+	global $indrajeet_content_size;
+	$indrajeet_content_size = 12;
+
+	if (  is_active_sidebar( 'Sidebar-1' ) &&   is_active_sidebar( 'Sidebar-2' ) ){
+		$indrajeet_content_size = 6;
+	} elseif ( ! is_active_sidebar( 'Sidebar-1' ) &&   is_active_sidebar( 'Sidebar-2' ) || is_active_sidebar( 'Sidebar-1' ) &&   ! is_active_sidebar( 'Sidebar-2' ) ) {
+		$indrajeet_content_size = 8;
+	} else {
+		$indrajeet_content_size = 12;
+	}
+
 ?>
-	
 	<div class="container">
 		<div class="row">
-			<div id="primary" class="content-area">
+			<?php get_sidebar('left'); ?>
+			<div id="primary" class="content-area col-md-<?php echo $indrajeet_content_size; ?>">
 				<main id="main" class="site-main">
-
 				<?php if ( have_posts() ) : ?>
 
 					<header class="page-header">

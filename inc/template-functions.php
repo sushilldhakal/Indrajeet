@@ -68,15 +68,14 @@ if ( ! function_exists( 'indrajeet_footer_widgets' ) ) :
 		}
 
 		$footer_areas = array( 'footer-sidebar', 'footer-sidebar-2', 'footer-sidebar-3', 'footer-sidebar-4' );
-
 		foreach ( $footer_areas as $footer ) {
 
 			if ( is_active_sidebar( $footer ) ) : ?>
 
 					<div class="col-md-<?php echo esc_attr( $class ); ?>" >
-
-						<?php dynamic_sidebar( $footer ); ?>
-
+						<div class="footer_area-wrapper" >
+							<?php dynamic_sidebar( $footer ); ?>
+						</div>
 					</div>
 				<?php
 
@@ -208,36 +207,39 @@ if ( ! function_exists( 'indrajeet_top_header' ) ) :
 
 		<div class="theme-top-header bg-black">
 			<div class="container">
-			   
-			   <div class="d-block d-sm-none">
-			    	<span class="top-header-mobile-title">
-						<?php echo esc_html('Welcome To', 'indrajeet'); ?>	
-						<?php bloginfo( 'name' ); ?>
-					</span>		
-			    	<span id="top-mobile-menu" class="travel-mobile-menu"><i class="fa fa-bars"></i></span>
-			    </div>
-			   <div class="navbar-collapse ws-theme-topnavbar-collapse" aria-expanded="false">
-					<div class="float-left">
-						<?php
-						/**
-						 * Hook indrajeet_top_header_left.
-						 *
-						 * @hooked indrajeet_top_header_left_content - 10
-						 */
-						do_action( 'indrajeet_top_header_left' );
-						?>
+			   <div class="row">
+			   		<div class="col-sm-12">
+					   <div class="d-block d-sm-none">
+					    	<span class="top-header-mobile-title">
+								<?php echo esc_html('Welcome To', 'indrajeet'); ?>	
+								<?php bloginfo( 'name' ); ?>
+							</span>		
+					    	<span id="top-mobile-menu" class="travel-mobile-menu"><i class="fa fa-bars"></i></span>
+					    </div>
+					   <div class="navbar-collapse indrajeet-theme-topnavbar-collapse" aria-expanded="false">
+							<div class="float-left">
+								<?php
+								/**
+								 * Hook indrajeet_top_header_left.
+								 *
+								 * @hooked indrajeet_top_header_left_content - 10
+								 */
+								do_action( 'indrajeet_top_header_left' );
+								?>
+							</div>
+							<div class="float-right">
+								<?php
+								/**
+								 * Hook indrajeet_top_header_right.
+								 *
+								 * @hooked indrajeet_top_header_right_content - 10
+								 */
+								do_action( 'indrajeet_top_header_right' );
+								?>
+							</div>
+					   </div>
 					</div>
-					<div class="float-right">
-						<?php
-						/**
-						 * Hook indrajeet_top_header_right.
-						 *
-						 * @hooked indrajeet_top_header_right_content - 10
-						 */
-						do_action( 'indrajeet_top_header_right' );
-						?>
-					</div>
-			   </div>
+				</div>	   
 			</div>
 		</div> 
 		<?php
@@ -256,7 +258,11 @@ if ( ! function_exists( 'indrajeet_top_header_right_content' ) ) :
 	 * @since 0.0.3
 	 */
 	function indrajeet_top_header_right_content() {
-		wp_nav_menu( array( 'theme_location' => 'social_menu', 'container_class' => 'header-social menu-icons', 'fallback_cb' => false ) );
+		wp_nav_menu( array( 
+			'theme_location' => 'social_menu', 
+			'container_class' => 'header-social menu-icons',
+			'menu_class' => 'nav navbar-nav social-menu', 
+			'fallback_cb' => false ) );
 	}
 
 endif;

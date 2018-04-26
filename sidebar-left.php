@@ -10,10 +10,11 @@
 
 
 global $indrajeet_sidebar_left_size;
-if ($indrajeet_sidebar_left_size == null || !is_numeric($indrajeet_sidebar_left_size)) {
-    $indrajeet_sidebar_left_size = 3;
-}
+    $indrajeet_sidebar_left_size = 4;
 
+if ( is_active_sidebar( 'Sidebar-1' ) ) {
+	$indrajeet_sidebar_left_size = 3;
+}
 
 if ( ! is_active_sidebar( 'Sidebar-2' ) ) {
 	return;

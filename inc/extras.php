@@ -38,43 +38,6 @@ if ( ! function_exists( 'indrajeet_active_footer_count' ) ) :
 
 endif;
 
-if ( ! function_exists('indrajeet_sidebar_active') ) :
-
-	/**
-	 * [indrajeet_sidebar_active count active sidebar]
-	 *
-	 * @return [INT] [Number of active sidebar widgets]
-	 *
-	 * @since 0.0.3
-	 */
-	function indrajeet_sidebar_active(){
-        global $indrajeet_sidebar_left_size, $indrajeet_sidebar_right_size;
-        if ($indrajeet_sidebar_left_size == null || !is_numeric($indrajeet_sidebar_left_size)) {
-            $indrajeet_sidebar_left_size = 3;
-        }
-        if ($indrajeet_sidebar_right_size == null || !is_numeric($indrajeet_sidebar_right_size)) {
-            $indrajeet_sidebar_right_size = 3;
-        }
-
-        if (is_active_sidebar('sidebar-left') && is_active_sidebar('sidebar-right')) {
-            $main_column_size = (12 - $indrajeet_sidebar_left_size - $indrajeet_sidebar_right_size);
-
-        } elseif (is_active_sidebar('sidebar-left') && !is_active_sidebar('sidebar-right')) {
-            $indrajeet_sidebar_left_size = 4;
-            $main_column_size = (12 - $indrajeet_sidebar_left_size);
-
-        } elseif (!is_active_sidebar('sidebar-left') && is_active_sidebar('sidebar-right')) {
-        	$indrajeet_sidebar_right_size = 4;
-            $main_column_size = (12 - $indrajeet_sidebar_right_size);
-        } else {
-            $main_column_size = 12;
-        }
-
-        return $main_column_size;
-    }// getMainColumnSize
-
-endif;
-
 if ( ! function_exists( 'indrajeet_primary_menu_fallback' ) ) :
 
 	/**

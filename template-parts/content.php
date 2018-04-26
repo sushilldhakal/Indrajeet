@@ -12,11 +12,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class('card'); ?>>
 
 
-	<?php if ( has_post_thumbnail() && is_single() ) : ?>
-		<div class="post-thumbnail">
-			<?php the_post_thumbnail('full', array('class' => 'card-img-top')); ?>
-		</div><!--  .post-thumbnail -->
-		<?php else : ?>
+	<?php if ( has_post_thumbnail() ) :?>
 			<div class="post-thumbnail">
 		    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 		        <?php the_post_thumbnail('full', array('class' => 'card-img-top')); ?>

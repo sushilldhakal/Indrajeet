@@ -1,7 +1,7 @@
 /*
 Theme Name: indrajeet
 Theme URI: http://sushill.com.np/indrajeet
-Author: SusHill
+Author: sus-hill
 Author URI: http://sushill.com.np
 Description: Material Design Bootstrap 4 WordPress Theme
 Version: 0.0.2
@@ -10399,14 +10399,6 @@ h6 {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px; }
-  @media (min-width: 576px) {
-    .content-area {
-      flex: 0 0 100%;
-      max-width: 100%; } }
-  @media (min-width: 768px) {
-    .content-area {
-      flex: 0 0 66.6666666667%;
-      max-width: 66.6666666667%; } }
 
 .widget-area {
   position: relative;
@@ -10414,14 +10406,6 @@ h6 {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px; }
-  @media (min-width: 576px) {
-    .widget-area {
-      flex: 0 0 100%;
-      max-width: 100%; } }
-  @media (min-width: 768px) {
-    .widget-area {
-      flex: 0 0 33.3333333333%;
-      max-width: 33.3333333333%; } }
 
 /*--------------------------------------------------------------
 # Full Width Content
@@ -10432,10 +10416,6 @@ h6 {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px; }
-  @media (min-width: 576px) {
-    .content-area-full {
-      flex: 0 0 100%;
-      max-width: 100%; } }
 
 /*--------------------------------------------------------------
 ## Comments
@@ -10606,7 +10586,7 @@ h6 {
 /*--------------------------------------------------------------
 ## Footer
 --------------------------------------------------------------*/
-.site-footer {
+.site-footer .footer_area-wrapper {
   padding: 4rem 0;
   margin-top: 4rem;
   background-color: #009688; }
@@ -10682,12 +10662,13 @@ img {
 .gallery-caption {
   display: block; }
 
-.alignright{
-  text-align:right;
-}
-.alignleft{
-  text-align: left;
-}
-.aligncenter{
-  text-align:center;
-}
+.alignright {
+  text-align: right; }
+
+.alignleft {
+  text-align: left; }
+
+.aligncenter {
+  text-align: center; }
+
+/*# sourceMappingURL=style.css.map */
