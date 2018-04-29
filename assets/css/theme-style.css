@@ -69,58 +69,91 @@
           transition: all 0.4s ease-in-out; }
     .theme-top-header ul.social-menu li {
       display: inline-block;
-      margin: 5px 3px;
-      position: relative;
-      width: 30px;
-      height: 30px; }
-      .theme-top-header ul.social-menu li:before {
-        line-height: 30px;
+      position: relative; }
+      .theme-top-header ul.social-menu li a {
+        font-size: 0;
         width: 30px;
         height: 30px;
+        display: inline-block;
+        margin: 5px 0;
         text-align: center;
         color: #009688;
         background-color: #fff;
         border-radius: 4px; }
-      .theme-top-header ul.social-menu li a {
-        position: absolute;
-        font-size: 0;
-        width: 30px;
-        height: 30px;
-        left: 0px; }
-      .theme-top-header ul.social-menu li.fa-facebook:hover::before {
-        background-color: #3B5998; }
-      .theme-top-header ul.social-menu li.fa-twitter:hover::before {
-        background-color: #55ACEE; }
-      .theme-top-header ul.social-menu li.fa-linkedin:hover::before {
-        background-color: #007ab5; }
-      .theme-top-header ul.social-menu li.fa-pinterest:hover::before {
-        background-color: #c91921; }
-      .theme-top-header ul.social-menu li.google-fa-plus:hover::before {
-        background-color: #dd4937; }
-      .theme-top-header ul.social-menu li.fa-youtube:hover::before {
-        background-color: #e22b26; }
-      .theme-top-header ul.social-menu li.fa-rss:hover::before {
-        background-color: #f75f0b; }
-      .theme-top-header ul.social-menu li.fa-tumblr:hover::before {
-        background-color: #34465d; }
-      .theme-top-header ul.social-menu li.fa-reddit:hover::before {
-        background-color: #FF4500; }
-      .theme-top-header ul.social-menu li.fa-dribbble:hover::before {
-        background-color: #ea4886; }
-      .theme-top-header ul.social-menu li.fa-digg:hover::before {
-        background-color: #1b5891; }
-      .theme-top-header ul.social-menu li.fa-flickr:hover::before {
-        background-color: #ff0082; }
-      .theme-top-header ul.social-menu li.fa-instagram:hover::before {
-        background-color: #9A6851; }
-      .theme-top-header ul.social-menu li.fa-vimeo:hover::before {
-        background-color: #17B3E8; }
-      .theme-top-header ul.social-menu li.fa-skype:hover::before {
-        background-color: #00a9f1; }
-      .theme-top-header ul.social-menu li.fa-blogger:hover::before {
-        background-color: #ff9334; }
-      .theme-top-header ul.social-menu li.fa-yahoo:hover::before {
-        background-color: #65106d; }
+        .theme-top-header ul.social-menu li a:before {
+          position: relative;
+          border-radius: 4px;
+          font: normal normal normal 14px/1 FontAwesome;
+          text-rendering: auto;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale; }
+        .theme-top-header ul.social-menu li a:hover:before {
+          color: #fff;
+          text-decoration: none; }
+        .theme-top-header ul.social-menu li a[href*="facebook.com"]:before {
+          content: '\f09a'; }
+        .theme-top-header ul.social-menu li a[href*="facebook.com"]:hover {
+          background-color: #3B5998; }
+        .theme-top-header ul.social-menu li a[href*="twitter.com"]:before {
+          content: '\f099'; }
+        .theme-top-header ul.social-menu li a[href*="twitter.com"]:hover {
+          background-color: #55ACEE; }
+        .theme-top-header ul.social-menu li a[href*="linkedin.com"]:before {
+          content: '\f0e1'; }
+        .theme-top-header ul.social-menu li a[href*="linkedin.com"]:hover {
+          background-color: #007ab5; }
+        .theme-top-header ul.social-menu li a[href*="pinterest.com"]:before {
+          content: '\f231'; }
+        .theme-top-header ul.social-menu li a[href*="pinterest.com"]:hover {
+          background-color: #c91921; }
+        .theme-top-header ul.social-menu li a[href*="plus.google.com"]:before {
+          content: '\f0d5'; }
+        .theme-top-header ul.social-menu li a[href*="plus.google.com"]:hover {
+          background-color: #dd4937; }
+        .theme-top-header ul.social-menu li a[href*="youtube.com"]:before {
+          content: '\f167'; }
+        .theme-top-header ul.social-menu li a[href*="youtube.com"]:hover {
+          background-color: #e22b26; }
+        .theme-top-header ul.social-menu li a[href*="rss.com"]:before {
+          content: '\f09e'; }
+        .theme-top-header ul.social-menu li a[href*="rss.com"]:hover {
+          background-color: #f75f0b; }
+        .theme-top-header ul.social-menu li a[href*="tumblr.com"]:before {
+          content: '\f173'; }
+        .theme-top-header ul.social-menu li a[href*="tumblr.com"]:hover {
+          background-color: #34465d; }
+        .theme-top-header ul.social-menu li a[href*="reddit.com"]:before {
+          content: '\f281'; }
+        .theme-top-header ul.social-menu li a[href*="reddit.com"]:hover {
+          background-color: #FF4500; }
+        .theme-top-header ul.social-menu li a[href*="dribbble.com"]:before {
+          content: '\f17d'; }
+        .theme-top-header ul.social-menu li a[href*="dribbble.com"]:hover {
+          background-color: #ea4886; }
+        .theme-top-header ul.social-menu li a[href*="digg.com"]:before {
+          content: '\f1a6'; }
+        .theme-top-header ul.social-menu li a[href*="digg.com"]:hover {
+          background-color: #1b5891; }
+        .theme-top-header ul.social-menu li a[href*="flickr.com"]:before {
+          content: '\f16e'; }
+        .theme-top-header ul.social-menu li a[href*="flickr.com"]:hover {
+          background-color: #ff0082; }
+        .theme-top-header ul.social-menu li a[href*="instagram.com"]:before {
+          content: '\f16d'; }
+        .theme-top-header ul.social-menu li a[href*="instagram.com"]:hover {
+          background-color: #9A6851; }
+        .theme-top-header ul.social-menu li a[href*="vimeo.com"]:before {
+          content: '\f27d'; }
+        .theme-top-header ul.social-menu li a[href*="vimeo.com"]:hover {
+          background-color: #17B3E8; }
+        .theme-top-header ul.social-menu li a[href*="skype.com"]:before {
+          content: '\f17e'; }
+        .theme-top-header ul.social-menu li a[href*="skype.com"]:hover {
+          background-color: #00a9f1; }
+        .theme-top-header ul.social-menu li a[href*="yahoo.com"]:before {
+          content: '\f19e '; }
+        .theme-top-header ul.social-menu li a[href*="yahoo.com"]:hover {
+          background-color: #65106d; }
   .theme-top-header .ws-theme-top-left {
     float: left; }
 

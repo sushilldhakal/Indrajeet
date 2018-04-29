@@ -142,79 +142,178 @@
       &.social-menu{
         li{
             display: inline-block;
-            margin: 5px 3px;
             position: relative;
-            width: 30px;
-            height: 30px;
-
-            &:before{
-              line-height: 30px;
-              width: 30px;
-              height: 30px;
-              text-align: center;
-              color: #009688;
-              background-color: #fff;
-              border-radius: 4px;
-            }
-
             a{
-              position: absolute;
-              font-size: 0;
-              width: 30px;
-              height: 30px;
-              left: 0px;
-            }
+                font-size: 0;
+                width: 30px;
+                height: 30px;
+                display: inline-block;
+                margin: 5px 0;
+                text-align: center;
+                color: #009688;
+                background-color: #fff;
+                border-radius: 4px;
 
-             &.fa-facebook:hover::before{
-                background-color: #3B5998;
-            }
-            &.fa-twitter:hover::before{
-                background-color: #55ACEE;
-            }
-            &.fa-linkedin:hover::before{
-                background-color: #007ab5;
-            }
-            &.fa-pinterest:hover::before{
-                background-color: #c91921;
-            }
-            &.google-fa-plus:hover::before{
-                background-color: #dd4937;
-            }
-            &.fa-youtube:hover::before{
-                background-color: #e22b26;
-            }
-            &.fa-rss:hover::before{
-                background-color: #f75f0b;
-            }
-            &.fa-tumblr:hover::before{
-                background-color: #34465d;
-            }
-            &.fa-reddit:hover::before{
-                background-color: #FF4500;
-            }
-            &.fa-dribbble:hover::before{
-                background-color: #ea4886;
-            }
-            &.fa-digg:hover::before{
-                background-color: #1b5891;
-            }
-            &.fa-flickr:hover::before{
-                background-color: #ff0082;
-            }
-            &.fa-instagram:hover::before{
-                background-color: #9A6851;
-            }
-            &.fa-vimeo:hover::before{
-                background-color: #17B3E8;
-            }
-            &.fa-skype:hover::before{
-                background-color: #00a9f1;
-            }
-            &.fa-blogger:hover::before{
-                background-color: #ff9334;
-            }
-            &.fa-yahoo:hover::before{
-                background-color: #65106d;
+              &:before{
+                position: relative;
+                border-radius: 4px;
+                font: normal normal normal 14px/1 FontAwesome;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+
+
+              }
+              &:hover{
+
+                &:before{
+                  color:#fff;
+                  text-decoration: none;
+                }
+              }
+              &[href*="facebook.com"] {
+                  &:before{
+                    content: '\f09a';
+                  }
+
+                  &:hover{
+                    background-color: #3B5998;
+                  }
+              }
+              &[href*="twitter.com"] {
+                &:before{
+                  content: '\f099';
+                }
+                    &:hover{
+                        background-color: #55ACEE;
+                    }
+                }
+              &[href*="linkedin.com"]{
+
+                &:before{
+                  content: '\f0e1';
+                }
+                &:hover{
+                  background-color: #007ab5;
+                }
+              }
+              &[href*="pinterest.com"]{
+
+                &:before{
+                  content: '\f231';
+                }
+                &:hover{
+                  background-color: #c91921;
+                }
+              }
+              &[href*="plus.google.com"]{
+
+                &:before{
+                  content: '\f0d5';
+                }
+                &:hover{
+                  background-color: #dd4937;
+                }
+              }
+              &[href*="youtube.com"]{
+
+                &:before{
+                  content: '\f167';
+                }
+                &:hover{
+                  background-color: #e22b26;
+                }
+              }
+              &[href*="rss.com"]{
+
+                &:before{
+                  content: '\f09e';
+                }
+                &:hover{
+                  background-color: #f75f0b;
+                }
+              }
+              &[href*="tumblr.com"]{
+
+                &:before{
+                  content: '\f173';
+                }
+                &:hover{
+                  background-color: #34465d;
+                }
+              }
+              &[href*="reddit.com"]{
+
+                &:before{
+                  content: '\f281';
+                }
+                &:hover{
+                  background-color: #FF4500;
+                }
+              }
+              &[href*="dribbble.com"]{
+
+                &:before{
+                  content: '\f17d';
+                }
+                &:hover{
+                  background-color: #ea4886;
+                }
+              }
+              &[href*="digg.com"]{
+
+                &:before{
+                  content: '\f1a6';
+                }
+                &:hover{
+                  background-color: #1b5891;
+                }
+              }
+              &[href*="flickr.com"]{
+
+                &:before{
+                  content: '\f16e';
+                }
+                &:hover{
+                  background-color: #ff0082;
+                }
+              }
+              &[href*="instagram.com"]{
+
+                &:before{
+                  content: '\f16d';
+                }
+                &:hover{
+                  background-color: #9A6851;
+                }
+              }
+              &[href*="vimeo.com"]{
+
+                &:before{
+                  content: '\f27d';
+                }
+                &:hover{
+                  background-color: #17B3E8;
+                }
+              }
+              &[href*="skype.com"]{
+
+                &:before{
+                  content: '\f17e';
+                }
+                &:hover{
+                  background-color: #00a9f1;
+                }
+              }
+              &[href*="yahoo.com"]{
+
+                &:before{
+                  content: '\f19e ';
+                }
+                &:hover{
+                  background-color: #65106d;
+                }
+              }
             }
         }
       }
