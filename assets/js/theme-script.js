@@ -39,6 +39,11 @@
 	    window.location.href = jQuery(this).attr('href');
   });
 
+  $('#top-mobile-menu').click(function(){
+  	$('.indrajeet-theme-topnavbar-collapse').toggle('slide');
+  	$(this).toggleClass('open');
+  });
+
   $('#onload').hide();
 
 })(jQuery);   

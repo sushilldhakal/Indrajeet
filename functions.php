@@ -32,9 +32,6 @@ class INDRAJEET_Theme_Class{
 		// Setup theme => add_theme_support, register_nav_menus, load_theme_textdomain, etc
 		add_action( 'after_setup_theme', array( 'INDRAJEET_Theme_Class', 'indrajeet_setup' ), 10 );
 
-		// Setup theme => Generate the custom CSS file
-		add_action( 'admin_bar_init', array( 'INDRAJEET_Theme_Class', 'save_customizer_css_in_file' ), 9999 );
-
 		// register sidebar widget areas
 		add_action( 'widgets_init', array( 'INDRAJEET_Theme_Class', 'register_sidebars' ) );
 
@@ -51,14 +48,8 @@ class INDRAJEET_Theme_Class{
 			// Add meta viewport tag to header
 			add_action( 'wp_head', array( 'INDRAJEET_Theme_Class', 'meta_viewport' ), 1 );
 
-			// Load this file in last
-			add_action( 'wp_enqueue_scripts', array( 'INDRAJEET_Theme_Class', 'custom_style_css' ), 9999 );
-
 			// Load theme js
 			add_action( 'wp_enqueue_scripts', array( 'INDRAJEET_Theme_Class', 'theme_js' ) );
-
-			// Outputs custom CSS to the head
-			add_action( 'wp_head', array( 'INDRAJEET_Theme_Class', 'custom_css' ), 9999 );
 
 			// Minify the WP custom CSS because WordPress doesn't do it by default
 			add_filter( 'wp_get_custom_css', array( 'INDRAJEET_Theme_Class', 'minify_custom_css' ) );
@@ -369,43 +360,6 @@ class INDRAJEET_Theme_Class{
 
 	}
 
-
-	/**
-	 * All theme functions hook into the indrajeet_head_css filter for this function.
-	 *
-	 * @since 0.0.3
-	 */
-	public static function custom_css( $output = NULL ) {
-			    
-	    // Add filter for adding custom css via other functions
-		$output = apply_filters( 'indrajeet_head_css', $output );
-
-		// If Custom File is selected
-		if ( 'file' == get_theme_mod( 'indrajeet_customzer_styling', 'head' ) ) {
-
-			global $wp_customize;
-			$upload_dir = wp_upload_dir();
-
-			// Render CSS in the head
-			if ( isset( $wp_customize ) || ! file_exists( $upload_dir['basedir'] .'/indrajeet/custom-style.css' ) ) {
-
-				 // Minify and output CSS in the wp_head
-				if ( ! empty( $output ) ) {
-					echo "<!-- indrajeet CSS -->\n<style type=\"text/css\">\n" . wp_strip_all_tags( indrajeet_minify_css( $output ) ) . "\n</style>";
-				}
-			}
-
-		} else {
-
-			// Minify and output CSS in the wp_head
-			if ( ! empty( $output ) ) {
-				echo "<!-- indrajeet CSS -->\n<style type=\"text/css\">\n" . wp_strip_all_tags( indrajeet_minify_css( $output ) ) . "\n</style>";
-			}
-
-		}
-
-	}
-
 	/**
 	 * Minify the WP custom CSS because WordPress doesn't do it by default.
 	 *
@@ -415,70 +369,6 @@ class INDRAJEET_Theme_Class{
 
 		return indrajeet_minify_css( $css );
 
-	}
-
-	/**
-	 * Save Customizer CSS in a file
-	 *
-	 * @since 0.0.3
-	 */
-	public static function save_customizer_css_in_file( $output = NULL ) {
-
-		// If Custom File is not selected
-		if ( 'file' != get_theme_mod( 'indrajeet_customzer_styling', 'head' ) ) {
-			return;
-		}
-
-		// Get all the customier css
-	    $output = apply_filters( 'indrajeet_head_css', $output );
-
-	    // Get Custom Panel CSS
-	    $output_custom_css = wp_get_custom_css();
-
-	    // Minified the Custom CSS
-		$output .= indrajeetwp_minify_css( $output_custom_css );
-			
-		// We will probably need to load this file
-		require_once( ABSPATH . 'wp-admin' . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'file.php' );
-		
-		global $wp_filesystem;
-		$upload_dir = wp_upload_dir(); // Grab uploads folder array
-		$dir = trailingslashit( $upload_dir['basedir'] ) . 'indrajeet'. DIRECTORY_SEPARATOR; // Set storage directory path
-
-		WP_Filesystem(); // Initial WP file system
-		$wp_filesystem->mkdir( $dir ); // Make a new folder 'indrajeet' for storing our file if not created already.
-		$wp_filesystem->put_contents( $dir . 'custom-style.css', $output, 0644 ); // Store in the file.
-
-	}
-
-	/**
-	 * Include Custom CSS file if present.
-	 *
-	 * @since 0.0.3
-	 */
-	public static function custom_style_css( $output = NULL ) {
-
-		// If Custom File is not selected
-		if ( 'file' != get_theme_mod( 'indrajeet_customzer_styling', 'head' ) ) {
-			return;
-		}
-
-		global $wp_customize;
-		$upload_dir = wp_upload_dir();
-
-		// Get all the customier css
-	    $output = apply_filters( 'indrajeet_head_css', $output );
-
-	    // Get Custom Panel CSS
-	    $output_custom_css = wp_get_custom_css();
-
-	    // Minified the Custom CSS
-		$output .= indrajeet_minify_css( $output_custom_css );
-
-		// Render CSS from the custom file
-		if ( ! isset( $wp_customize ) && file_exists( $upload_dir['basedir'] .'/indrajeet/custom-style.css' ) && ! empty( $output ) ) { 
-		    wp_enqueue_style( 'indrajeet-custom', trailingslashit( $upload_dir['baseurl'] ) . 'indrajeet/custom-style.css', false, null );	    			
-		}		
 	}
 
 	/**

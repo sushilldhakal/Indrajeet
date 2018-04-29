@@ -209,7 +209,7 @@ if ( ! function_exists( 'indrajeet_top_header' ) ) :
 			<div class="container">
 			   <div class="row">
 			   		<div class="col-sm-12">
-					   <div class="d-block d-sm-none">
+					   <div class="d-block d-md-none">
 					    	<span class="top-header-mobile-title">
 								<?php echo esc_html('Welcome To', 'indrajeet'); ?>	
 								<?php bloginfo( 'name' ); ?>

@@ -7,7 +7,6 @@
  * @package Indrajeet
  */
 
-global $indrajeet_sidebar_right_size;
 $indrajeet_sidebar_right_size = 4;
 
 if ( is_active_sidebar( 'Sidebar-2' ) ) {
@@ -19,6 +18,6 @@ if ( ! is_active_sidebar( 'Sidebar-1' ) ) {
 }
 ?>
 
-<aside id="secondary" class="widget-area col-md-<?php echo $indrajeet_sidebar_right_size; ?>">
+<aside id="secondary" class="widget-area col-md-<?php echo esc_attr( '$indrajeet_sidebar_right_size' ); ?>">
 	<?php dynamic_sidebar( 'Sidebar-1' ); ?>
 </aside><!-- #secondary -->
