@@ -13,7 +13,9 @@ A starter theme called Indrajeet.
 
 == Description ==
 
-This is a starter Material Design WordPress Theme based on the Bootstrap framework.
+**I don't offer support through the support forum. Use [GitHub](https://github.com/sushilldhakal/indrajeet) instead.**
+
+*Indrajeet* is a starter Material Design WordPress Theme based on the Bootstrap framework.
 Minimal and Clean WordPress Theme. Mobile-friendly (responsive), optimized for speed, and implements SEO (search engine optimization) best practices. The theme options are powered by Customizer. You can check out the demo at http:/sushill.com.np/indrajeet/ for a closer look.
 
 == Installation ==
@@ -32,6 +34,9 @@ Indrajeet includes support for Infinite Scroll in Jetpack.
 
 = 0.0.2 =
 * Initial release
+
+= 0.0.6 =
+* Bug Fixing
 
 == Credits ==
 
