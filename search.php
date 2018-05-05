@@ -21,7 +21,7 @@ get_header();
 	<div class="container">
 		<div class="row">
 			<?php get_sidebar('left'); ?>
-			<div id="primary" class="content-area col-md-<?php echo esc_attr( '$indrajeet_content_size' ); ?>">
+			<div id="primary" class="content-area col-md-<?php echo esc_attr( $indrajeet_content_size ); ?>">
 				<main id="main" class="site-main">
 				<?php if ( have_posts() ) : ?>
 
@@ -58,7 +58,7 @@ get_header();
 				?>
 
 				</main><!-- #main -->
-			</section><!-- #primary -->
+			</div><!-- #primary -->
 
 <?php
 get_sidebar();

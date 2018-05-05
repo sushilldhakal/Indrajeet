@@ -4,11 +4,11 @@ Theme URI: http://sushill.com.np/indrajeet
 Author: sus-hill
 Author URI: http://sushill.com.np
 Description: Material Design Bootstrap 4 WordPress Theme
-Version: 0.0.2
+Version: 0.0.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: indrajeet
-Tags: blog,left-sidebar,custom-background,custom-logo,footer-widgets
+Tags: blog,left-sidebar,right-sidebar,three-columns, two-columns, custom-background,custom-logo,footer-widgets
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -10583,10 +10583,11 @@ h6 {
 /*--------------------------------------------------------------
 ## Footer
 --------------------------------------------------------------*/
-.site-footer .footer_area-wrapper {
-  padding: 4rem 0;
-  margin-top: 4rem;
+.site-footer {
   background-color: #009688; }
+  .site-footer .footer_area-wrapper {
+    padding: 4rem 0;
+    margin-top: 4rem; }
 
 .site-content {
   word-break: break-word; }

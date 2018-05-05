@@ -13,7 +13,8 @@ A starter theme called Indrajeet.
 
 == Description ==
 
-Bloging site
+This is a starter Material Design WordPress Theme based on the Bootstrap framework.
+Minimal and Clean WordPress Theme. Mobile-friendly (responsive), optimized for speed, and implements SEO (search engine optimization) best practices. The theme options are powered by Customizer. You can check out the demo at http:/sushill.com.np/indrajeet/ for a closer look.
 
 == Installation ==
 
@@ -67,3 +68,10 @@ Indrajeet includes support for Infinite Scroll in Jetpack.
 	Source: https://github.com/vadikom/smartmenus/  v1.1.0 - September 17, 2017
 	License: [MIT] Copyright (c) Vasil Dinkov, Vadikom Web Ltd.
 	License Url: https://github.com/vadikom/smartmenus/blob/master/LICENSE-MIT
+
+
+== Images Used ==
+	Screenshot Image urls
+	- https://pixabay.com/en/rock-cliff-high-tableau-mountain-731140/ [Free-Photos][CC0 License]
+	Pixabay provides images under CC0 license (https://creativecommons.org/about/cc0)
+		
