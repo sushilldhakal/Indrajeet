@@ -119,7 +119,7 @@ if ( ! function_exists( 'indrajeet_show_header' ) ) :
 		$header_image_style = '';
 		$header_image_class = '';
 		if ( '' !== $header_image->url ) {
-			$header_image_style = 'background-image: url(' . $header_image->url . ');background-position: 50%;background-size: cover;';
+			$header_image_style = 'background-image: url(' . esc_url( $header_image->url ) . ');background-position: 50%;background-size: cover;';
 			$header_image_class = 'site-header-image';
 		}
 		?>
