@@ -41,7 +41,8 @@
 				<div class="site-info">
 						<?php
 						/* translators: 1: Theme name, 2: Theme author. */ 
-						apply_filters( 'ws_footer_credits_text', printf( esc_html__( '%1$s WordPress Theme Design & Developed by %2$s.', 'indrajeet' ), 'Indrajeet', '<a href="http://sushill.com.np/" rel="designer">Sushill</a>' ) ); ?>
+						apply_filters( 'ws_footer_credits_text', printf( esc_html__( 'Theme: %1$s by %2$s.', 'indrajeet' ), 'indrajeet', 'Sus Hill' ) ); ?>
+
 
 				</div><!-- .site-info -->
 			</div>
