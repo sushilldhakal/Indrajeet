@@ -38,6 +38,10 @@ Indrajeet includes support for Infinite Scroll in Jetpack.
 = 0.0.6 =
 * Bug Fixing
 
+= 1.0.2 =
+* Footer Issue Fixing
+
+
 == Credits ==
 
 * Based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
@@ -52,7 +56,7 @@ Indrajeet includes support for Infinite Scroll in Jetpack.
 	License: SIL Open Font License
 	License Url: http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web
 
-* Font Awesome 4.6.3 by @davegandy
+* Font Awesome 4.7.0 by @davegandy
 	Source: http://fontawesome.io
 	License: http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
 

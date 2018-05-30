@@ -272,7 +272,7 @@ class INDRAJEET_Theme_Class{
 
 		wp_enqueue_style( 'indrajeet-josefin-sans-font-css', 'https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700' );
 
-		wp_enqueue_style( 'font-awesome', $dir . 'font-awesome.min.css', array(), '4.6.3' );
+		wp_enqueue_style( 'font-awesome', $dir . 'font-awesome.css', array(), '4.6.3' );
 
 		wp_enqueue_style( 'indrajeet-theme-style', $dir . 'theme-style.css', false, $theme_version );
 		
