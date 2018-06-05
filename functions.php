@@ -79,8 +79,7 @@ class INDRAJEET_Theme_Class{
 		define( 'INDRAJEET_THEME_VERSION', $version );
 
 		// Javascript and CSS Paths
-		define( 'INDRAJEET_JS_DIR_URI', INDRAJEET_THEME_URI .'/assets/js/' );
-		define( 'INDRAJEET_CSS_DIR_URI', INDRAJEET_THEME_URI .'/assets/css/' );
+		define( 'INDRAJEET_JS_DIR_URI', INDRAJEET_THEME_URI .'/js/' );
 
 		// Include Paths
 		define( 'INDRAJEET_INC_DIR', INDRAJEET_THEME_DIR .'/inc/' );
@@ -262,20 +261,12 @@ class INDRAJEET_Theme_Class{
 	public static function theme_css() {
 
 		// Define dir
-		$dir =INDRAJEET_CSS_DIR_URI;
 		$theme_version =INDRAJEET_THEME_VERSION;
 
 
 		wp_enqueue_style( 'indrajeet-style', get_stylesheet_uri() );
 
-		wp_enqueue_style( 'smart-menu-style', $dir . 'sm-core-css.css', array(), '1.1.0' );
-
-		wp_enqueue_style( 'indrajeet-josefin-sans-font-css', 'https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700' );
-
-		wp_enqueue_style( 'font-awesome', $dir . 'font-awesome.css', array(), '4.6.3' );
-
-		wp_enqueue_style( 'indrajeet-theme-style', $dir . 'theme-style.css', false, $theme_version );
-		
+		wp_enqueue_style( 'indrajeet-josefin-sans-font-css', 'https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700' );		
 	}
 
 	/**

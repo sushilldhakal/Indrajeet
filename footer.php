@@ -41,7 +41,7 @@
 				<div class="site-info">
 						<?php
 						/* translators: 1: Theme name, 2: Theme author. */ 
-						apply_filters( 'ws_footer_credits_text', printf( esc_html__( 'Theme: %1$s by %2$s.', 'indrajeet' ), 'indrajeet', 'Sus Hill' ) ); ?>
+						apply_filters( 'ws_footer_credits_text', printf( esc_html__( 'Theme: %1$s by %2$s.', 'indrajeet' ), 'Indrajeet', 'Sus Hill' ) ); ?>
 
 
 				</div><!-- .site-info -->

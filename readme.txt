@@ -1,7 +1,7 @@
 === Indrajeet ===
 
 Contributors: automattic
-Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+Tags: translation-ready,blog,left-sidebar,right-sidebar,three-columns, two-columns, custom-background,custom-logo,footer-widgets,entertainment,threaded-comments
 
 Requires at least: 4.5
 Tested up to: 4.8
@@ -16,7 +16,7 @@ A starter theme called Indrajeet.
 **I don't offer support through the support forum. Use [GitHub](https://github.com/sushilldhakal/indrajeet) instead.**
 
 *Indrajeet* is a starter Material Design WordPress Theme based on the Bootstrap framework.
-Minimal and Clean WordPress Theme. Mobile-friendly (responsive), optimized for speed, and implements SEO (search engine optimization) best practices. The theme options are powered by Customizer. You can check out the demo at http:/sushill.com.np/indrajeet/ for a closer look.
+Minimal and Clean WordPress Theme. Mobile-friendly (responsive), optimized for speed, and implements SEO (search engine optimization) best practices. The theme options are powered by Customizer. You can check out the demo at http:/sushill.com.np/indrajeet/ for a closer look. Indrajeet theme also has compatibality for Elementor Plugin, that adds ease to managing your pages and post with the help of drag and drop frontend builder.
 
 == Installation ==
 
@@ -32,14 +32,15 @@ Indrajeet includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 0.0.2 =
+= 1.0.0 =
 * Initial release
-
-= 0.0.6 =
-* Bug Fixing
 
 = 1.0.2 =
 * Footer Issue Fixing
+
+= 1.0.3 =
+* translation-ready
+* elementor compatible
 
 
 == Credits ==

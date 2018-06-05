@@ -1,4 +1,28 @@
 
+/*--------------------------------------------------------------
+# Fontawesone
+--------------------------------------------------------------*/
+
+@import "font/font-awesome";
+
+/*--------------------------------------------------------------
+# Fontawesone
+--------------------------------------------------------------*/
+
+@import "menu/sm-core";
+
+.alignright{
+  text-align:right;
+}
+
+.alignleft{
+  text-align: left;
+}
+
+.aligncenter{
+  text-align:center;
+}
+
 //media query mixin
 @mixin large-screen{
   @media (min-width: 1200px){
@@ -343,6 +367,11 @@
     line-height: 0;
 }
 
+.elementor-page{
+  .header-section {
+    margin-bottom: 0;
+  }
+}
 .site-header {
     min-height: 60px;
     background: #fff;
