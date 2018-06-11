@@ -56,15 +56,9 @@ function indrajeet_do_admin_page() {
 
     <h3><?php _e('Bootstrap features', 'indrajeet'); ?></h3>
     <p><?php echo sprintf(__('This theme can use all Bootstrap 4 classes, elements and styles. Please read the %sBootstrap 4 document%s.', 'indrajeet'), '<a href="https://getbootstrap.com/docs/4.0" target="bootstrap4_doc">', '</a>'); ?></p>
-
-    <h3><?php _e('Responsive image', 'indrajeet'); ?></h3>
-    <p><?php echo sprintf(__('For responsive image please add img-fluid class to img element. Example: %s', 'indrajeet'), '<code>&lt;img src=&quot;...&quot; alt=&quot;&quot; class=&quot;img-fluid&quot;&gt;</code>'); ?></p>
-
-    <h3><?php _e('Responsive video', 'indrajeet'); ?></h3>
-    <p><?php echo sprintf(__('Cloak video element (video element or embeded video) with %s.', 'indrajeet'), '<code>&lt;div class=&quot;flexvideo&quot;&gt;...&lt;/div&gt;</code>'); ?></p>
     
     <h3><?php _e('Font Awesome features', 'indrajeet'); ?></h3>
-    <p><?php echo sprintf(__('This theme comes with Font Awesome 5, please read the %sFont Awesome document%s for icon classes and features.', 'indrajeet'), '<a href="https://fontawesome.com/" target="fontawesome5_doc">', '</a>'); ?></p>
+    <p><?php echo sprintf(__('This theme comes with Font Awesome 4, please read the %sFont Awesome document%s for icon classes and features.', 'indrajeet'), '<a href="https://fontawesome.com/" target="fontawesome4_doc">', '</a>'); ?></p>
 
     <h3><?php _e('Indrajeet Change log', 'indrajeet'); ?></h3>
     <p><?php echo sprintf(__('You can see what was changed in each version or each commits on our %sGithub page%s.'), '<a href="https://github.com/sushilldhakal/indrajeet" target="bb4_commits">', '</a>'); ?></p>
