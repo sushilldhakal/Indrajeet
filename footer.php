@@ -39,9 +39,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="site-info">
-						<?php
-						/* translators: 1: Theme name, 2: Theme author. */ 
-						apply_filters( 'ws_footer_credits_text', printf( esc_html__( 'Theme: %1$s by %2$s.', 'indrajeet' ), 'Indrajeet', 'Sus Hill' ) ); ?>
+
+						<?php esc_html_e( 'Proudly powered by', 'indrajeet' ); ?> <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'indrajeet' ) ); ?>"><?php esc_html_e( 'WordPress', 'indrajeet' ); ?></a>
+				
+				<span class="sep"> | </span>
+					
+					<?php apply_filters( 'ws_footer_credits_text', printf( esc_html__( '%1$s by %2$s.', 'indrajeet' ), 'Indrajeet', '<a href="http://sushill.com.np/" rel="designer">Sus Hill</a>' ) ); ?>
 
 
 				</div><!-- .site-info -->
