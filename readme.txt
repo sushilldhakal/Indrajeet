@@ -42,6 +42,10 @@ Indrajeet includes support for Infinite Scroll in Jetpack.
 * translation-ready
 * elementor compatible
 
+= 1.0.4 =
+* Added theme help Info
+* Footer background color options
+
 
 == Credits ==
 

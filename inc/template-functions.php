@@ -288,3 +288,37 @@ if ( ! function_exists( 'indrajeet_top_header_left_content' ) ) :
 endif;
 
 add_action( 'indrajeet_top_header_left', 'indrajeet_top_header_left_content' );
+
+
+if ( ! function_exists( 'indrajeet_get_theme_option' ) ) :
+
+	/**
+	 * Get theme option
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $key Option key.
+	 * @return mixed Option value.
+	 */
+	function indrajeet_get_theme_option( $key ) {
+
+		$default_options = indrajeet_default_values();
+
+		if ( empty( $key ) ) {
+			return;
+		}
+
+		$theme_options = (array) get_theme_mod( 'indrajeet_options' );
+		$theme_options = wp_parse_args( $theme_options, $default_options );
+
+		$value = null;
+
+		if ( isset( $theme_options[ $key ] ) ) {
+			$value = $theme_options[ $key ];
+		}
+
+		return $value;
+
+	}
+
+endif;

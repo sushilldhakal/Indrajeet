@@ -70,3 +70,26 @@ if ( ! function_exists( 'indrajeet_header_style' ) ) :
 		<?php
 	}
 endif;
+
+
+
+
+
+/**
+ * Add color styling from theme
+ */
+function indrajeet_custom_color_options() {
+
+	wp_enqueue_style('indrajeet-custom-colors-style',get_template_directory_uri() . '/css/custom-colors.css');
+	
+		// Color Values.
+		$footer_bg_color = indrajeet_get_theme_option( 'indrajeet_footer_bg_color' );
+
+		$customizer_colors_css = '
+			.site-footer {
+			    background-color:' . esc_attr( $footer_bg_color ) . ';
+			}
+		';
+		wp_add_inline_style( 'indrajeet-custom-colors-style', $customizer_colors_css );
+}
+add_action( 'wp_enqueue_scripts', 'indrajeet_custom_color_options' );

@@ -23,6 +23,11 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/template-functions.php';
 
 /**
+ *  Default theme values.
+ */
+require get_template_directory() . '/inc/customizer/default-values.php';
+
+/**
  * Custom functions that act independently of the theme templates.
  */
 require get_template_directory() . '/inc/extras.php';
@@ -39,3 +44,12 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+/**
+* Admin Theme info Page.
+*/
+
+if ( is_admin() ) {
+
+	require get_template_directory() . '/inc/admin/admin.php';
+
+}
