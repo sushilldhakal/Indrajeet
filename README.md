@@ -115,3 +115,6 @@ Images Used
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+
+If my theme can help you, your jobs, your projects please <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LLV2UBSXHX328&lc=US&item_name=Indrajeet&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"> buy me some foods.</a>
